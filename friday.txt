@@ -1,0 +1,57 @@
+/*
+ID: shamakh1
+TASK: friday
+LANG: C++                 
+*/
+#include <bits/stdc++.h>
+#include <iostream>
+#include <fstream>
+#include <string>
+
+
+using namespace std;
+
+   
+
+
+   bool isLeap(int year){
+	if((year%100)==0){
+	  return (year%400)==0;
+ 	}else{
+	  return (year%4)==0;
+	}
+   }
+
+int main(){
+
+   freopen("friday.in","r",stdin);
+   freopen("friday.out","w",stdout);
+   
+   int N;
+   cin>>N;
+
+   int months[]={31,28,31,30,31,30,31,31,30,31,30,31};
+   int ans[7]={};
+   int cur=0;
+
+   for(int year=1900;year<1900+N;year++){
+	  if(isLeap(year)){
+	     months[1]=29;
+          }else{
+	     months[1]=28;
+	  }
+	for(int month=0;month<12;month++){
+	    
+	for(int d=1;d<=months[month];d++){
+		if(d==13){
+		  ans[cur]++;
+		}
+		cur=(cur+1)%7;
+	}
+	}
+   }
+   
+ 
+   printf("%d %d %d %d %d %d %d\n",ans[5],ans[6],ans[0],ans[1],ans[2],ans[3],ans[4]);
+ 
+}

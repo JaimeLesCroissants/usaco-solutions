@@ -1,0 +1,58 @@
+/*
+ID: shamakh1
+TASK: milk2
+LANG: C++                 
+*/
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
+using namespace std;
+
+int main() {
+    ofstream fout ("milk2.out");
+    ifstream fin ("milk2.in");
+    
+    int lct;
+    int lit=1000;
+    int cur=0;
+
+    int N;
+    fin>>N;
+    
+
+
+    int starts[N]={};
+    int ends[N]={};
+
+    
+
+    for(int i=0;i<N;i++){
+       fin>>starts[i]>>ends[i];
+    }
+
+   if(N==1){
+     lit=0;
+     lct=ends[0]-starts[0];
+   }else{
+      
+      for(int i=1;i<N;i++){
+        if(starts[i]<ends[cur]){
+           lct=max(lct,ends[i]-starts[cur]);
+	   lit=max(lit,starts[i]-ends[cur]);
+	   cur=i;
+        }else{
+	  //lct=max(lct,ends[cur]-starts[cur]);
+	  //if((starts[i]-ends[cur])==1){
+	   
+           ends[cur]=max(ends[cur],ends[i]);
+	  //}else{lit=0;}
+	}
+      }
+     
+    }
+    fout<<max(lct,ends[cur]-starts[cur])<<" "<<lit<<endl;
+
+
+}

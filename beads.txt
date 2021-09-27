@@ -1,0 +1,70 @@
+/*
+ID: shamakh1
+TASK: beads
+LANG: C++                 
+*/
+#include<bits/stdc++.h>
+#include<iostream>
+#include<fstream>
+#include<string>
+
+using namespace std;
+
+int main(){
+
+   freopen("beads.in","r",stdin);
+   freopen("beads.out","w",stdout);
+
+   int N;
+   cin >> N;
+
+   int ans=0;
+   
+
+   string nklace;
+   cin >> nklace;
+				
+   
+
+   for(int i=0;i<N;i++){
+	int count=0;
+	int strt=i;
+	int end=(i-1+N)%N;
+
+	char col1=nklace[strt],col2=nklace[end];
+	while(true){
+	   if(count>=N)break;
+           if(col1==nklace[strt]||nklace[strt]=='w'){
+	     count++;
+	     strt=(strt+1)%N;
+	   }else if(col1=='w'){
+	     col1=nklace[strt];
+	     count++;
+	     strt=(strt+1)%N;
+ 	   }else{
+	     break;
+	   }
+ 	   
+	
+	}
+	while(true){
+	   if(count>=N)break;
+	   if(col2==nklace[end]||nklace[end]=='w'){
+	     count++;
+	     end=(end-1+N)%N;
+	   }else if(col2=='w'){
+	     col2=nklace[end];
+	     count++;
+	     end=(end-1+N)%N;
+ 	   }else{
+	     break;
+	   }
+	}
+	if(count>ans){
+	  ans=count;
+	}
+   }
+printf("%d\n",ans);
+
+
+}

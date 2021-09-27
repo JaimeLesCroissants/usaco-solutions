@@ -1,0 +1,13 @@
+POINTERS
+
+pointers are memory addresses
+
+void* ptr=0; or NULL or nullptr
+
+int var=8;
+
+to get the address of var we write: void* ptr=&var; and now ptr has the address of var;
+
+to change the value of var we need to use types instead of void we use int* ptr=&var;
+
+and then we can change it: *ptr =10; and now var equals 10; 
